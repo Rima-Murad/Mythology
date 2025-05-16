@@ -35,7 +35,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"v1",
+    "$GMSequence":"",
     "%Name":"spr_plane_enemy_medium_l_turn_3",
     "autoRecord":true,
     "backdropHeight":768,

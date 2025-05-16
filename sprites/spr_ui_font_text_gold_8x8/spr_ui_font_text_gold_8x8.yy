@@ -89,7 +89,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"v1",
+    "$GMSequence":"",
     "%Name":"spr_ui_font_text_gold_8x8",
     "autoRecord":true,
     "backdropHeight":768,

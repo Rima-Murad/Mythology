@@ -1,5 +1,5 @@
 {
-  "$GMSequence":"v1",
+  "$GMSequence":"",
   "%Name":"seq_game_win_menu",
   "autoRecord":true,
   "backdropHeight":480,

@@ -1,5 +1,5 @@
 {
-  "$GMSequence":"v1",
+  "$GMSequence":"",
   "%Name":"seq_med_double_3",
   "autoRecord":true,
   "backdropHeight":480,
