@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Trains",
-    "path":"folders/Objects/Enemies/Trains.yy",
+    "path":"folders/Objects/Environment/Enemies/Trains.yy",
   },
   "parentObjectId":null,
   "persistent":false,
