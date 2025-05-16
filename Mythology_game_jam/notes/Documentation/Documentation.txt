@@ -1,0 +1,609 @@
+This note is high-level documentation for the core parts of this template project.
+All events in this project are commented, so you can open any event and read the comments to understand what it does, and how it works.
+
+# Animation Curves
+
+There are 4 Animation Curves witin this project:
+
+ac_diagonal
+	Contains three straight line curves for right to left movement and left to right movement as well as a default straight line that goes down the center.
+ac_hook
+	Contains two hooked curves for right to left to right movement and left to right to left movement.
+ac_seesaw
+	Contrains two seesaw like curves that go from right to center to left and left to centre to right.
+ac_slow
+	Contains two gradual curves that are for left to right movement and right to left movement.
+
+
+
+# Fonts
+
+There are technically no Font assets witin this project however bitmap sprites are used and loaded in using scripts:
+
+font_score made from spr_ui_font_score_8x8.
+font_text made from spr_ui_font_text_gold_8x8.
+font_text_white made from spr_ui_font_text_en_white_8x8.
+
+
+
+# OBJECTS
+
+There are 58 Objects witin this project:
+
+Enemies
+	Planes
+		Pathed
+			Big
+				obj_enemy_big_double
+					Larger enemy object for the plane type that fires double burst shots.
+					Create				Create event for setting the planes sprite and sound assets as well as its intended travel speeds, reload timers and ammo variables.
+						fire()				- Function called when then enemy fires and creates projectiles at needed offsets.
+						
+				obj_enemy_big_single
+					Larger enemy object for the plane type that fires single burst shots.
+					Create				Create event for setting the planes sprite and sound assets as well as its intended travel speeds, reload timers and ammo variables.
+						fire()				- Function called when then enemy fires and creates projectiles at needed offsets.
+			
+			Medium
+				obj_enemy_medium_double
+					Medium enemy object for the plane type that fires double burst shots.
+					Create				Create event for setting the planes sprite and sound assets as well as its intended travel speeds, reload timers and ammo variables.
+						fire()				- Function called when then enemy fires and creates projectiles at needed offsets.
+				
+				obj_enemy_medium_rapid
+					Medium enemy object for the plane type that fires rapid burst shots.
+					Create				Create event for setting the planes sprite and sound assets as well as its intended travel speeds, reload timers and ammo variables.
+						fire()				- Function called when then enemy fires and creates projectiles at needed offsets.
+						
+				obj_enemy_medium_single
+					Medium enemy object for the plane type that fires single burst shots.
+					Create				Create event for setting the planes sprite and sound assets as well as its intended travel speeds, reload timers and ammo variables.
+						fire()				- Function called when then enemy fires and creates projectiles at needed offsets.
+						
+			Small
+				obj_enemy_small_double
+					Small enemy object for the plane type that fires double burst shots.
+					Create				Create event for setting the planes sprite and sound assets as well as its intended travel speeds, reload timers and ammo variables.
+						fire()				- Function called when then enemy fires and creates projectiles at needed offsets.
+				
+				obj_enemy_small_rapid
+					Small enemy object for the plane type that fires rapid burst shots.
+					Create				Create event for setting the planes sprite and sound assets as well as its intended travel speeds, reload timers and ammo variables.
+						fire()				- Function called when then enemy fires and creates projectiles at needed offsets.
+				
+			obj_enemy_plane_pathed
+				Parent object for pathed enemy planes.
+				Create				Create event for setting up the planes position targeting, sets up movement curves and inital firing systems.
+					set_movement_curve(new_curve, curve_name)	- Function used to set up new curve for movement from animation curve assets.
+					fire_admin()								- Function that is called during combat to keep fire rates under control.
+					fire()										- Empty function to be used by child objects to set up firing positions.
+				Step				Main update event used for enemies movement and firing logic, will also check if itself is a leader plane for movement balances.
+			
+		obj_enemy_basic
+			Small simple enemy type that fires single shots, not pathable and is used as a tutorial for players to learn how to play essentially.
+			Create				Create event sets up the planes values for movement and firing as well as its firing locations.
+				fire()				- Function called when enemy fires, creates projectiles at required locations.
+			Step				Step event used to update enemy when game not paused. This enemy will try to follow the player while locked into the top area of the screen, will actively avoid collisions with the player if too
+										close as this will destroy when on impact. 
+						
+		obj_enemy_boss
+			Large rapid firing enemy used as the final boss, similar to the basic tutorial plane will not follow pre planned path but will try fly towards the player and actively crash into them if too close or behind.
+			Create						Sets up the enemy values for movements, firing rates and locations as well as sprites and other assets used.
+				fire()						- Called when the enemy fires, sets new projectiles up in correct positions and adjusts the firing rate values.
+			Destroy						Stops the boss music playing when the boss is destroyed.
+			Step						Targets the player and fires upon them when possible, if player is behind then plane will try back into them.
+			Draw						Draws the plane but also draws healthbar just above.
+			-><- obj_enemy_plane_base	Does nothing and exits out the event as boss is not effected by other planes.
+			-><- obj_projectile_player	Reduces health and plays explosion animations at projectile location when destroying them.
+						
+		obj_enemy_plane_base
+			Base enemy plane object that is used as a parent for all enemy planes both pathed and not pathed. Creates all the needed behaviours for a plane and allows for an easy method when checking for collisions against projectiles.
+			Create						Sets up the shadow for the enemy as well as checks for if lead plane.
+			Destroy						Destroys the shadow object and stops the engine sound playing.
+			Begin Step					Doesn't run when game is paused but plays the engine sounds when not playing and checks for lead plane setting itself if none found before main step update.
+			Step						Applies the calculated velocity to the enemy planes from their set target points.
+			End Step					Controls if the plane shows one of its tilted sprites based on the movement velocity.
+			Draw						Checks if shaders are possible and draws the enemy with shader based on movement or if hit.
+			-><- obj_projectile_player	Reduces health, creates a pickup drop chance if destroyed and explosions.
+			Outside View 0				Checks if plane has left screen and destroys them.
+	
+	Trains
+		obj_enemy_train
+			Head locomotive part of trains that appear, are resposible for the body formations as well as movements of the entire trains.
+			Create				Setup for the train including its direction and how many cars it will have.
+				new_car(x, y, direction, is_forced)	- Function called when adding new train cars to the train, can be forced to create new cars even if tracks dont exist.
+				spawn_random()						- Called when spawning the train, will try to set up in any valid orientation set at random initally.
+				spawn_direction(new_facing)			- Called when spawning the train, will set up the train in set orientation even if not on tracks.
+				blow_up								- Called when the train is hit by bombs, will blow the train up and any connected cars, causing explosion effects as points to be added based on how large train was.
+				set_movement()						- Function used to set the new movement for movement list applied to train.
+				apply_movement()					- Function used to follow the set movements and apply needed offsets to cars as they follow the tracks.
+			Destroy				Checks for the trains sound and stops if possible.
+			Step				Checks if the train can move along a track if enabled and moves the cars and turrets with it. Also moves the train elements down as the level moves along.
+			Draw				Draws the train and the cars with layer based on its final facing.
+					
+		obj_train_car
+			Static train car object just used for collision checks.
+			Create				Sets up variable for the owner head of train to be attached to.
+			Step				Checks for the owner to still exist otherwise destroys itself.
+			Draw				Skips over the draw event as cars are drawn by the train heads.
+		
+		obj_train_spawner
+			Spawner objects that are placed within the rooms and will create trains at their positions when they are at the top of the screen.
+			Create				Contains variable for the spawned state of object that can be reset if needed.
+			Step				Checks the spawners position and creates the train object with correct facing, setting it up when in spawn possible area just above player screen.
+					
+		obj_train_turret
+			Enemy turret attached to the train cars, will aim towards and shoot projectiles towards player.
+			Create				Sets up turret variables including fire rate and ammo similar to how the planes shoot.
+				fire()				- Fire function creates and sets up the projectiles for shooting custom projectiles that head towards the player and slowly scale up.
+			Step				Orientates the turret to aim towards the player and calls the fire function after cooldowns have expired.
+					
+Environment
+	Buildings
+		obj_building__base
+			Parent object for buildings that can be blown up by player bombs.
+			Create				Sets alive state for building.
+				blow_up()			- Function called when building is hit by players bombs will check if building is still alive before exploding and changing the buildings image state.
+		
+		obj_building_a - f
+			Child buildings identical to the parent object except contain unique sprites that are then used within the playable room.
+			
+	obj_cloud
+		Cloud objects that float down the screen and display shadows onto them when possible.
+		Create				Sets the cloud to a random sprite and creates shadow for it.
+		Destroy				Destroys the clouds shadow object.
+		Step				Moves the cloud and destroys it when it has left the bottom of the screen.
+		Draw				Draws the cloud and shadows on top of it if enabled.
+
+	obj_pickup
+		Pickup object that is created when enemeies are destroyed, cycles through valid pickup options and is collected by the player.
+		Create				Sets up the pickup state as well as its shadow and timers for cycling through swaps.
+			swap_pickup(type)	- Function for swaping the assets and state of pickup from type parameter.
+			pickup_popup(input)	- Function for creating a popup when pickup is collected, the popup uses the string input and sets to standard green text.
+		Destroy				Destroys the shadow object attached.
+		Step				Moves the pickups position and adjusts timers, processes swap when cooldown has finished ensuring only valid powerups can be used.
+		Draw				Draws the pickup outline with the sprite inside being set to correct image based on pickup state.
+		-><- obj_player		Based on what state the pickup is in will change what effects are given to the player.
+		
+	obj_shadow
+		Shadow object that is attached to other objects with set spite for shadows.
+		Create				Variables created for offsets and scales, also adds itself to the global list of shadows
+			draw_handle()		- Empty function that can be set by objects to draw into rather than using the draw events so they can be drawn by the shadow manager instead.
+		Destroy				Deletes this shadow from the global list of shadows.
+		Step				Calculates the shadows scale and offset before setting a draw call to the draw handle function.
+		Draw				Exits out of event without drawing as shadows are drawn within the shadow manager object.
+		
+Managers
+	obj_game_manager
+		Main game manager object for when within the room. Handles most of the levels logic and processes.
+		Create				Sets the games music and sounds as well as values for the score. Creates the needed objects for the game too such as the player and needed UI.
+		Step				Moves the room elements down as needed looping them up when the room loop, also checks empty train tracks and tries to create trains when needed on them as well as updating the gamepad vibration script.
+		Room End			Stops all audio as the room is finished.
+
+	obj_sequence_manager
+		Handles any sequences that may need to be attached to objects for movements or logic.
+		Create				Sets needed states for the sequence for things like if it can be paused for has functionality on its death.
+			set_death(new_function)		- Calls the new set function once the sequence has finished.
+			create_sequence(seq, layer)	- Creates the sequence on specified layer for this object.
+		Step				Checks what the status of the sequence is updating its position if needed as well as if the sequence has finished and this object should be destroyed.
+		
+	obj_shadow_manager
+		Object responsible for drawing all of the ground surface level shadows.
+		Create				Sets a surface to be used.
+		Draw				Uses the surface to draw all the shadows from the shadow list and blends them to not create too intense shadows.
+		Room End			Clears the global list of shadows.
+		
+	obj_splash_manager
+		Object used within splash screen to set up all needed values prior to the game starting
+		Create				Sets up all the global variables to be used checking if they already exist and creates the splash screen GUI.
+		Step				Calls the gamepad vibration script which wouldnt update if not called.
+		Draw GUI			Draws added text information is debug mode has been enabled.
+		Key Press - F1		Toggles full screen mode.
+		Key Press - F2		Toggles debug mode.
+		Key Press - F3		Toggles touch input mode.
+		Key Press - F4		Toggles shadow display mode.
+		Game Start			References all assets used within the project for the compiler.
+		Room End			Stops the main music from playing.
+		
+	obj_sprite_animation_manager
+		Object used for fire and forget sprite animations (like explosions)
+		Create				Sets sprite to use random rotation and creates move speed variable.
+		Step				Pauses the sprite animation when the game state is paused and moves at set speed.
+		Animation End		Destroys the object instance as no longer needed.
+		
+	obj_touch_manager
+		Tracks where device touches occur and distributes the ID's to the compatable buttons when clicked on.
+		Begin Step			Checks for each device touch position and stores this to check for collisons while clicked linking them to buttons. Also creates the joystick object on clicks that happen outside buttons when it needs to exist.
+		
+	obj_wave_manager
+		Used for setting and controlling what enemies will be spawned into the level.
+		Create				Creates the variables for the stage and level values as well as level times.
+			death_handle()		- Function used for calling the wave manager from the end of sequences to tell them the wave has ended.
+		Step				Tracks the time passed and pushes new waves out when current timers have finished or there are no enemies left.
+		Key Press - F2		Sets the level time to equal its threshold pushing the level onto the next section.
+		
+Player
+	obj_player
+		Main player plane object users control.
+		Create						Sets up the objects states for if its playing or spawning, what upgrades it currently uses, move speed and reload rates as well as setting up the players shadow.
+		Destroy						Destroys the players shadow and creates a game over screen stopping any game music that may occur.
+		Begin Step					Stores the previous positions before movement to be used by the motion blur shader. Also resets any touch inputs.
+		Step						Controls the players movement and other inputs such as firing. Creates projectiles when needed and also protects the player when in hurt state returning them back to normal when complete.
+		End Step					Adjusts the shown sprite and shadow scale depending on what strength the horizontal velocity is, tilting the plane left or right.
+		Draw Begin					Pauses the image animation when the game is paused and greys out the player image when hurt.
+		Draw						Draws the player with the motion blur shader when possible.
+		-><- obj_enemy_plane_base	Hurts the player and makes them bounce back when colliding with enemies.
+		-><- obj_projectile_base	Checks the projectile comes from and enemy and is high enough to interact before taking damage and displaying effects killing the player if needed.
+		
+	obj_player_shield
+		Object attached to player when in a shielded state to protect them for a limited time.
+		Create						Sets the shield to the player, sets the life timer and a gamepad vibration for the effect.
+			add_life()					- Used to reset shield if still active adding new life to its timer.
+		Step						Contiunes to attach to the player fading it out when close to the end of its life.
+		-><- obj_enemy_projectile	Creates an explosion and destroys the projectile.
+
+Projectiles
+	obj_enemy_projectile
+		Enemy projectile object that is fired from both enemy planes and turrets
+		Create				Sets the projectiles values for speed and state on if its airbourn or not.
+		Step				Scales the projectiles up if needed swapping their layers if large enough.
+		
+	obj_player_bomb
+		Bomb projectile created by the player falls from the sky to expload on the ground or ocean surface.
+		Create				Sets the inital values for the bomb.
+		Destroy				Destroys the bombs shadow object too.
+		Step				Updates the bombs position and scale. When bomb has scaled down to ground level checks what would be interacted with. Plays relevent explosion animation and interacts with trains or buildings that may have been present.
+		
+	obj_projectile_base
+		Base parent projectile object for all projectile objects.
+		Create				Sets up values for speed and projectile state if big or not for damage potential.
+		Step				Only updates the projectile when the game is not paused.
+		Outside View 0		Destroys the projectile.
+		
+	obj_projectile_player
+		Player projectile for shooting shot and missile projectiles.
+		Create				Sets the state for type of projectile used (upgrades).
+		Step				Only updates the projectile when the game is not paused.
+		Draw				Changes the sprite drawn depending on the projectiles state.
+
+UI
+	Buttons
+		obj_button_close
+			Button used to close the controls menu in the splash screen.
+			Create				Sets button functionality and sprites.
+			Begin Step			Sets all other buttons to idle state.
+			Step				Selects button if gamepad or key input detected.
+
+		obj_button_continue
+			Continue button to be used in the pause screen.
+			Create				Sets the button functionality to unpause the game.
+			Step				Gets gamepad info for the continue button bind, will also auto select this button on gamepad or keyboard input.
+			
+		obj_button_controls
+			Controls button used inside the games main menu.
+			Create				Sets the button functionality and sprites.
+			Other Events		All other events are inherited but check the controls menu does not exits.
+		
+		obj_button_highlight
+			Parent object for buttons to use that highlight swapping between set sprites.
+			Create					Setup for the button state to be used
+				button_triggered()		- Empty function to be called when the button is triggered.
+				prev_option()			- Used to highlight the previous option when activated.
+				next_option()			- Used to highlight the next option when activated.
+			Begin Step				Checks if the mouse is hovered into button and sets state.
+			Step					Checks for inputs and sets sprites from state used.	
+			End Step				Checks if the button is in released state and calls function.
+			Draw					Draws the button normally.
+			Left Pressed			Checked if the button is being hovered and sets it to pressed.
+			Mouse Enter				Checks if the button is idle and sets to hovered.
+			Mouse Leave				Checks if the button is not released before setting to idle.
+			Global Left Released	Checks if the button is pressed and sets state to released.
+			
+		obj_button_menu
+			Menu button to be used in the pause and game over screens.
+			Create				Sets the button functionality to take the player back to the spash screen room.
+			
+		obj_button_mute
+			Mute button to be used in the splash screen.
+			Create				Sets the button functionality to toggle the master volume based on if the game is muted or not. Displaying the relevant sprite.
+			Other Events			All other events are inherited but check the controls menu does not exits.
+			
+		obj_button_pause
+			Pause button to be used during gameplay.
+			Create				Sets the button functionality to create the pause screen. Can also be triggered to destroy the pause screen again if needed.
+			Step				Gets gamepad info for the pause button bind.
+			Draw				Draws the button sprite and back panel while the game is in play.
+			Other Events		All other events are inherited but check the controls menu does not exits.
+			
+		obj_button_play
+			Play button to be used in the splash screen.
+			Create				Sets the button functionality to take the player back to the main level and start the game.
+			Step				Gets gamepad info for the play button bind, will also auto select this button on gamepad or keyboard input.
+			Other Events		All other events are inherited but check the controls menu does not exits.
+			
+		obj_button_quit
+			Quit button to be used in the splash screens.
+			Create				Sets the button functionality to exit and stop the game is possible. Otherwise game is just restarted.
+			Other Events			All other events are inherited but check the controls menu does not exits.
+			
+		obj_button_retry
+			Retry button to be used in the gameover screens.
+			Create				Sets the button functionality to restart the room for a new run.
+			Step				Gets gamepad info for the retry button bind, will also auto select this button on gamepad or keyboard input.
+			
+	Menus
+		obj_control_screen
+			Menu screen that when created shows the controls menu.
+			Destroy				Also destroys the close button attached to the menu.
+			Draw				Draws the menu and all of its needed sprites and text.
+	
+		obj_game_over_screen
+			Game over screen object that is created when the game ends and the player has lost.
+			Create				Sets the music and saves the players score if new record is set.
+			Destroy				Destroys the buttons menu uses.
+			Draw				Draws the text attached to the banner at the scale and alpha banner uses.
+			
+		obj_game_win_screen
+			Game win screen object that is created when the game ends and the boss has been defeated.
+			Create				Sets the music and saves the players score if new record is set.
+			Destroy				Destroys the buttons menu uses.
+			Draw				Draws the text attached to the banner at the scale and alpha banner uses.
+			
+		obj_pause_screen
+			Game pause screen that is created by a sequence when the game is paused.
+			Destroy				Destroys the buttons menu uses.
+			Step				Destroys itself when the game is not paused.
+			Draw				Draws the text attached to the banner at the scale and alpha banner uses.
+	
+	Touch
+		obj_touch_base
+			Parent touch button used by the touch UI buttons.
+			Create				Setup for storing the touch ID attached.
+				touch_action()	- Similar to notmal buttons this function is what is called when the button is interacted with.
+			Begin Step			Checks if its touch ID has been set and then checks if the device positions asscociated with that are colliding and held. Calls the fuctionallity when released.
+			Draw				Draws the sprite with grey image blend for when held.
+		
+		obj_touch_bomb
+			Bomb button for touch UI.
+			Create				Sets functionality to call bomb input in player.
+			Begin Step			Ensures the button isnt just held to call constant inputs and is released.
+			
+		obj_touch_joystick
+			Player movement vitual joystick for touch UI.
+			Create				Creates variable touch id.
+			Destroy				Resets player touch x and y values to zero.
+			Begin Step			Checks joystick is still being held before sending values to player or destroying the joystick if released.
+			Draw				Draws the base back of the joystick as well as the head sprite clamped into position.
+			
+		obj_touch_shot
+			Shot button for touch UI.
+			Create				Sets functionality to call shot input in player.
+	
+	obj_crit_indicator
+		Pop up text that will gradually fade out in game.
+		Create				Setup for texts style variables.
+		Step				Checks game is not paused before moving or fading out text.
+		Draw				Draws the text at correct scale and alpha.
+		
+	obj_hud_score
+		Hud elements object for player score and health.
+		Create				Sets up variables for hud positions.
+		Draw				Draws the score and health hud for the player.
+
+
+
+# ROOMS
+
+There are 2 Rooms within this project:
+
+rm_levels
+	Main gameplay room, made up of layers that scroll up.
+	
+	Layer				Layer Desciption.
+	Instances			Main instance layer contains obj_game_manager and has any touch UI applied to it.
+	Menus				Instance layer for menus such as pause and game over screens.
+	Notifications		Where the intro and boss warning popups are created in.
+	UI					UI layer for in game hud elements.
+	Criticals			Layer that any crit text popups for scores are created in.
+	Explosions			Instance layer for any in air explosions that appear in front of the player.
+	Shield				Layer for the player shield to be created in.
+	Player				Layer for the player instance to exist within.
+	Pickups				Instance layer for pickups so they apear behind the player but infront of enemies.
+	Enemy_Planes		Enemy plane instance layer.
+	Projectiles			Layer for all player and enemy projectiles to be created in.
+	Clouds				Start of the background objects layers, this seperates airbourn and low altitude projectiles. 
+	Bombs				Layer used for low altitude projectiles.
+	Shadow_Surface		Layer all ground shadows are drawn to (in front of buildings and trains).
+	Shadows				Layer that keeps the instance manager for shadows.
+	Ground_Explosions	Explosions from bombs landing are created on this layer.
+	Turrets				Layer for turrets that exist on top of trains.
+	Trains				Train objects are created within this layer.
+	Train_Spawners		Instance layer for the train spawner objects to be placed into.
+	Tracks				Tilemap layer for the train track lines.
+	Building_Instances	Instance layer for all the manually placed buildings to be set into.
+	Forest				Tilemap for the forest background elements.
+	Land				Tilemap for all ground level tiles, used for checking if bombs collide on the ground.
+	Water				Final Scrolling background tilemap controlled by the game manager.
+	Background			Background layer - left blank.
+	
+rm_splash
+	Main splash screen room (Set to first room)
+	
+	Layer				Layer Desciption.
+	High_Menu			Layer used for the front most menus infront of the main splash screen.
+	Instances			Contains the splash screen manager and is where the UI sequence is created in.
+	Background			Static background for scrolling schmup.
+
+
+
+# Scripts
+
+There are 3 Scripts within this project:
+
+scr_font_loader
+	This script is used to load in all the bitmap fonts from sprites
+	
+		scr_font_load_all()
+				This is the function that loads all the sprites into fonts and sets them to global variables.
+				
+scr_gamepad_vibrations
+	Script creates the functions that can effectively adjust the gamepad vibration functionality.
+	
+		gp_vibration_update()
+				This function is called to update the current gamepad vibration based on what the global left and right vibration values are currently.
+				
+		gamepad_vibration(l_strength, r_strength, time)
+				Fucntion used to add the vibration strength to the gamepad haptics for the time stated.
+
+scr_savedata_manager
+	Script for functions that handle saving and loading from buffers.
+	
+		scr_savedata_load()
+				Returns the save data value from the buffer if set.
+				
+		scr_savedata_save(score)
+				Saves the save data score to the highscore buffer.
+
+
+
+# SEQUENCES
+
+There are 13 sequences within this project:
+
+Menus
+	seq_control_menu
+		Sequence for the control menu.
+
+	seq_game_over_menu
+		Sequence for the game over menu.
+		
+	seq_game_win_menu
+		Sequence for the game win menu.
+		
+	seq_pause_menu
+		Sequence for the pause menu.
+		
+	seq_splash_menu
+		Sequence for the spalsh menu.
+
+Planes
+	seq_big_double_3
+	seq_big_single_3
+	seq_med_double_3
+	seq_med_rapid_3
+	seq_med_single_3
+	seq_small_double_3
+	seq_small_rapid_3
+		Sequences are premade layout for a set of planes of the type in the sequence name.
+		
+		
+
+# SHADERS
+
+There are 2 shaders within this project:
+
+sh_blur
+		Motion blur shader that uses the input velocity to blur the sprites displayed.
+
+sh_highlighted
+		Shader that makes the sprites displayed you a white out mask.
+
+
+
+# Sounds
+
+There are 47 sound files within this project:
+
+They are organised by their type
+	Ambience
+		These are background sounds for the island.
+	Engines
+		Planes
+			Engine sounds for the planes.
+		Trains
+			Engine sounds for the trains.
+	Impacts
+		Explosions
+			Explosion sounds for the explosion animation.
+		Shield
+			Sounds for when the player shield is hit.
+		- also contains sound for smaller impact hits.
+	Music
+		Main music stings when win, lose, gameplay and the boss.
+	Pickups
+		All the powerup sounds that could play.
+	Projectiles
+		Bombs
+			Bomb dropping sounds.
+		Enemies
+			Enemy firing sounds.
+		Player
+			Player firing sounds.
+		Turrets
+			Turret firing sounds.
+	UI
+		Button pushed sound effect.
+
+		
+		
+# SPRITES
+
+There are 93 sprites within this project:
+
+They are organised by their use.
+	Effects
+		Explosion sprite effects.
+	Enemies
+		Planes
+			Big
+				Large enemy plane sprites.
+			Medium
+				Medium enemy plane sprites.
+			Small
+				Small enemy plane sprites.
+		Trains
+			Train, cars and turret sprites.
+	Environment
+		Buildings
+			All building sprites used on ground level.
+		Clouds
+			Cloud and cloud shadow sprites.
+		Tilesets
+			Scrolling background tileset sprites.
+	Pickups
+		Item, outline and shadow sprites.
+	Player
+		Player plane and shield sprites.
+	Projectiles
+		Enemy
+			Enemy projectiles.
+		Player
+			Player projectiles including bombs.
+	Splash
+		Splash screen background and controls.
+	UI
+		Buttons
+			Icons
+				Button icon sprites.
+			Panels
+				Back sprites for buttons.
+		Fonts
+			Bitmap sprites for fonts that need to be loaded in.
+		HUD
+			Hud sprites such as health and the menu backgrounds.
+		Touch
+			Touch UI sprites.
+		
+
+
+~~ Possible Edits! ~~
+
+If you want to edit parts of this project to make it more unique and personal feel free to!
+
+Why not try:
+	- Editing the levels tilemap to create your own unique looking island.
+	- Adjusting the waves and enemies to become more challenging.
+	- Making new pickups to transform how players can play the game.
+	- Or use this as an idea of how to make your own game from scratch!
+	
+Don't forget to share what you make to gx.games so others can play your game too!

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_hit_small",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.717792,
+  "name":"snd_hit_small",
+  "parent":{
+    "name":"Impacts",
+    "path":"folders/Sounds/Impacts.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_hit_small.wav",
+  "type":0,
+  "volume":1.0,
+}
