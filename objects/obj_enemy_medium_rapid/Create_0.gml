@@ -5,9 +5,9 @@
 event_inherited();
 
 // Sets the sprites tilting left and right and default
-default_sprite = spr_plane_enemy_medium_3;
-left_sprite = spr_plane_enemy_medium_l_turn_3;
-right_sprite = spr_plane_enemy_medium_r_turn_3;
+default_sprite = demon_1;
+left_sprite = demon_1;
+right_sprite = demon_1;
 
 // Engine sound file attached to plane
 engine_sound_file = snd_engine_enemy_6;

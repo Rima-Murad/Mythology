@@ -1,5 +1,5 @@
 {
-  "$GMSequence":"",
+  "$GMSequence":"v1",
   "%Name":"seq_touch_ui",
   "autoRecord":true,
   "backdropHeight":480,

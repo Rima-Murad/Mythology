@@ -63,7 +63,7 @@ collision_time = 0;
 // Creates and sets up new shadow for the enemy plane
 shadow = instance_create_layer(x, y, "Shadows", obj_shadow);
 shadow.owner = self;
-shadow.sprite_index = (global.shadow_mode_toggle? spr_plane_enemy_shadow : spr_plane_enemy_shadow_old);
+shadow.sprite_index = (global.shadow_mode_toggle? demon_1 : demon_1);
 shadow.image_alpha = 0.9;
 
 // Drop rate for pickups
