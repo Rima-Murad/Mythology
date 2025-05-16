@@ -1,6 +1,6 @@
 {
   "$GMProject":"",
-  "%Name":"Scrolling Shooter Game Template",
+  "%Name":"Mythology",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
@@ -89,7 +89,7 @@
   "MetaData":{
     "IDEVersion":"2024.8.1.171",
   },
-  "name":"Scrolling Shooter Game Template",
+  "name":"Mythology",
   "resources":[
     {"id":{"name":"ac_diagonal","path":"animcurves/ac_diagonal/ac_diagonal.yy",},},
     {"id":{"name":"ac_hook","path":"animcurves/ac_hook/ac_hook.yy",},},
@@ -292,10 +292,6 @@
     {"id":{"name":"spr_plane_enemy_small_r_turn_2","path":"sprites/spr_plane_enemy_small_r_turn_2/spr_plane_enemy_small_r_turn_2.yy",},},
     {"id":{"name":"spr_plane_enemy_small_r_turn_3","path":"sprites/spr_plane_enemy_small_r_turn_3/spr_plane_enemy_small_r_turn_3.yy",},},
     {"id":{"name":"spr_plane_enemy_turret","path":"sprites/spr_plane_enemy_turret/spr_plane_enemy_turret.yy",},},
-    {"id":{"name":"spr_plane_player_l_turn","path":"sprites/spr_plane_player_l_turn/spr_plane_player_l_turn.yy",},},
-    {"id":{"name":"spr_plane_player_r_turn","path":"sprites/spr_plane_player_r_turn/spr_plane_player_r_turn.yy",},},
-    {"id":{"name":"spr_plane_player_shadow_old","path":"sprites/spr_plane_player_shadow_old/spr_plane_player_shadow_old.yy",},},
-    {"id":{"name":"spr_plane_player_shadow","path":"sprites/spr_plane_player_shadow/spr_plane_player_shadow.yy",},},
     {"id":{"name":"spr_plane_player","path":"sprites/spr_plane_player/spr_plane_player.yy",},},
     {"id":{"name":"spr_popup_bg","path":"sprites/spr_popup_bg/spr_popup_bg.yy",},},
     {"id":{"name":"spr_projectile_bomb_big","path":"sprites/spr_projectile_bomb_big/spr_projectile_bomb_big.yy",},},
