@@ -2,7 +2,7 @@
   "$GMSprite":"",
   "%Name":"spr_plane_enemy_shadow",
   "bboxMode":0,
-  "bbox_bottom":15,
+  "bbox_bottom":7,
   "bbox_left":0,
   "bbox_right":18,
   "bbox_top":0,

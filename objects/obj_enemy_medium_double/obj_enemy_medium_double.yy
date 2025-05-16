@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Medium",
-    "path":"folders/Objects/Enemies/Planes/Pathed/Medium.yy",
+    "path":"folders/Objects/Environment/Enemies/Planes/Pathed/Medium.yy",
   },
   "parentObjectId":{
     "name":"obj_enemy_plane_pathed",
