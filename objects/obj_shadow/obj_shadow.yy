@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_plane_player_shadow",
+    "path":"sprites/spr_plane_player_shadow/spr_plane_player_shadow.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

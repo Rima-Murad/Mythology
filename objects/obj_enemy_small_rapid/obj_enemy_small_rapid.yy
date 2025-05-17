@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Small",
-    "path":"folders/Objects/Environment/Enemies/Planes/Pathed/Small.yy",
+    "path":"folders/Objects/Enemies/Planes/Pathed/Small.yy",
   },
   "parentObjectId":{
     "name":"obj_enemy_plane_pathed",

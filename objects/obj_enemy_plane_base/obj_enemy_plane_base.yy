@@ -16,7 +16,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Planes",
-    "path":"folders/Objects/Environment/Enemies/Planes.yy",
+    "path":"folders/Objects/Enemies/Planes.yy",
   },
   "parentObjectId":null,
   "persistent":false,
