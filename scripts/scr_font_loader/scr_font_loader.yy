@@ -6,7 +6,7 @@
   "name":"scr_font_loader",
   "parent":{
     "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "path":"folders/Objects/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
