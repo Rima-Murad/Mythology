@@ -29,7 +29,7 @@
   "origin":4,
   "parent":{
     "name":"Enemy",
-    "path":"folders/Sprites/Projectiles/Enemy.yy",
+    "path":"folders/Sounds/Sprites/Projectiles/Enemy.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
