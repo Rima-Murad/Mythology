@@ -264,6 +264,7 @@
     {"id":{"name":"spr_item","path":"sprites/spr_item/spr_item.yy",},},
     {"id":{"name":"spr_plane_enemy_turret","path":"sprites/spr_plane_enemy_turret/spr_plane_enemy_turret.yy",},},
     {"id":{"name":"spr_plane_player_l_turn","path":"sprites/spr_plane_player_l_turn/spr_plane_player_l_turn.yy",},},
+    {"id":{"name":"spr_plane_player_mess","path":"sprites/spr_plane_player_mess/spr_plane_player_mess.yy",},},
     {"id":{"name":"spr_plane_player_r_turn","path":"sprites/spr_plane_player_r_turn/spr_plane_player_r_turn.yy",},},
     {"id":{"name":"spr_plane_player_shadow_old","path":"sprites/spr_plane_player_shadow_old/spr_plane_player_shadow_old.yy",},},
     {"id":{"name":"spr_plane_player_shadow","path":"sprites/spr_plane_player_shadow/spr_plane_player_shadow.yy",},},
