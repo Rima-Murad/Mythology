@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":6.851437,
+  "duration":64.0,
   "name":"snd_lose_music",
   "parent":{
     "name":"Music",
