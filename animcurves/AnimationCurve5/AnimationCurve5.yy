@@ -10,8 +10,8 @@
   "function":0,
   "name":"AnimationCurve5",
   "parent":{
-    "name":"Mythology_game_jam",
-    "path":"Mythology_game_jam.yyp",
+    "name":"Mythodology_game_jam",
+    "path":"Mythodology_game_jam.yyp",
   },
   "resourceType":"GMAnimCurve",
   "resourceVersion":"2.0",
