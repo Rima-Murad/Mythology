@@ -1,7 +1,6 @@
-# Mythology
-Spring 2025 IGDA Game Jam at the University of New Orleans! 
+# Mythology Game Jam 
+Spring 2025 IGDA Game Jam at the University of New Orleans! This event's theme was <i><strong>Mythology</strong></i>!
 
-Event Theme: Mythology~~
 
 # Collaborators
 * Safa Abdala - [LinkedIn](https://www.linkedin.com/in/safa-a-bb298118a/) ... [GitHub](https://github.com/sabdalah)
