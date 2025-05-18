@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.717792,
+  "duration":0.7177778,
   "name":"snd_hit_small",
   "parent":{
     "name":"Impacts",
