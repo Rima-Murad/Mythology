@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.0709751,
+  "duration":1.070958,
   "name":"snd_life_up",
   "parent":{
     "name":"Pickups",
