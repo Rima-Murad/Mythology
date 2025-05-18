@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":115.918365,
+  "duration":118.32,
   "name":"snd_boss_music",
   "parent":{
     "name":"Music",
