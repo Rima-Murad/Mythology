@@ -36,7 +36,7 @@
   "origin":0,
   "parent":{
     "name":"Fonts",
-    "path":"folders/Sounds/Sprites/UI/Fonts.yy",
+    "path":"folders/Sprites/UI/Fonts.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

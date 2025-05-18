@@ -30,7 +30,7 @@
   "origin":4,
   "parent":{
     "name":"Clouds",
-    "path":"folders/Sounds/Sprites/Environment/Clouds.yy",
+    "path":"folders/Sprites/Environment/Clouds.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

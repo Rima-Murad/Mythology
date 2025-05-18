@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Splash",
-    "path":"folders/Sounds/Sprites/Splash.yy",
+    "path":"folders/Sprites/Splash.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

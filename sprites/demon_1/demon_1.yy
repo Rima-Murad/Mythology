@@ -45,7 +45,7 @@
   "origin":4,
   "parent":{
     "name":"Planes",
-    "path":"folders/Sounds/Sprites/Enemies/Planes.yy",
+    "path":"folders/Sprites/Enemies/Planes.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
