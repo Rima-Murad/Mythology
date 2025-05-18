@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Splash",
-    "path":"folders/Sprites/Splash.yy",
+    "path":"folders/Sounds/Sprites/Splash.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -63,8 +63,6 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
-    "seqHeight":74.0,
-    "seqWidth":51.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,
