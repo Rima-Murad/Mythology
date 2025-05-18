@@ -27,7 +27,7 @@
   "origin":9,
   "parent":{
     "name":"Player",
-    "path":"folders/Sprites/Projectiles/Player.yy",
+    "path":"folders/Sounds/Sprites/Projectiles/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

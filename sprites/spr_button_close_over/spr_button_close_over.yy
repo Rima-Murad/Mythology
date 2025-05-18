@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Panels",
-    "path":"folders/Sprites/UI/Buttons/Panels.yy",
+    "path":"folders/Sounds/Sprites/UI/Buttons/Panels.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
