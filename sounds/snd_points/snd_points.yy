@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.587938,
+  "duration":0.5879592,
   "name":"snd_points",
   "parent":{
     "name":"Pickups",

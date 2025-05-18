@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.173271,
+  "duration":1.173288,
   "name":"snd_bomb_fall_1",
   "parent":{
     "name":"Bombs",

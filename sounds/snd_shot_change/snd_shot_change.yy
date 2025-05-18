@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.495625,
+  "duration":1.4956462,
   "name":"snd_shot_change",
   "parent":{
     "name":"Pickups",
