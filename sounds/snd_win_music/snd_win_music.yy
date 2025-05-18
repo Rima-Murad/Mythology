@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":6.350272,
+  "duration":6.350271,
   "name":"snd_win_music",
   "parent":{
     "name":"Music",

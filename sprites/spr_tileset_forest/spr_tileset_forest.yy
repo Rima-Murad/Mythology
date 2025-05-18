@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Tilesets",
-    "path":"folders/Sounds/Sprites/Environment/Tilesets.yy",
+    "path":"folders/Sprites/Environment/Tilesets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

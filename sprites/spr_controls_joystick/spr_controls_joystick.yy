@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Touch",
-    "path":"folders/Sounds/Sprites/UI/Touch.yy",
+    "path":"folders/Sprites/UI/Touch.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

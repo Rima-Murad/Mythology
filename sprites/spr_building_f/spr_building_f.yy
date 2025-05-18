@@ -33,7 +33,7 @@
   "origin":4,
   "parent":{
     "name":"Buildings",
-    "path":"folders/Sounds/Sprites/Environment/Buildings.yy",
+    "path":"folders/Sprites/Environment/Buildings.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":16.0,
+  "duration":17.008062,
   "name":"snd_seascape_main",
   "parent":{
     "name":"Ambience",

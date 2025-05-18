@@ -35,7 +35,7 @@
   "origin":9,
   "parent":{
     "name":"Trains",
-    "path":"folders/Sounds/Sprites/Enemies/Trains.yy",
+    "path":"folders/Sprites/Enemies/Trains.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

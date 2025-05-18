@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Panels",
-    "path":"folders/Sounds/Sprites/UI/Buttons/Panels.yy",
+    "path":"folders/Sprites/UI/Buttons/Panels.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -63,6 +63,8 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
+    "seqHeight":47.0,
+    "seqWidth":110.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,

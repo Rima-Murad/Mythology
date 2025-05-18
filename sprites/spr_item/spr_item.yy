@@ -36,7 +36,7 @@
   "origin":4,
   "parent":{
     "name":"Pickups",
-    "path":"folders/Sounds/Sprites/Pickups.yy",
+    "path":"folders/Sprites/Pickups.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

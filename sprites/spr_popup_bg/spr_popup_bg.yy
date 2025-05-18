@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Hud",
-    "path":"folders/Sounds/Sprites/UI/Hud.yy",
+    "path":"folders/Sprites/UI/Hud.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
